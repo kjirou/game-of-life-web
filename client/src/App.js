@@ -1,3 +1,4 @@
+import GameOfLife from 'game-of-life-logic';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import {default as produce, setAutoFreeze} from 'immer';
@@ -33,6 +34,24 @@ export default class App {
       columnLength,
       cells,
     };
+  }
+
+  _tickGame() {
+    // TODO: 悪くないライブラリだけど連携処理で重いし、せっかくだし自分で書いてみる
+    const gol = new GameOfLife(this._cellMatrix.rowLength, this._cellMatrix.columnLength);
+    const zeroOneMap = this._cellMatrix.cells.map(cellsRow => {
+      return cellsRow.map(cell => cell.age > 0 ? 1 : 0);
+    });
+    gol.copyMatrixAt(0, 0, zeroOneMap);
+    gol.tick();
+    this._cellMatrix.cells = produce(this._cellMatrix.cells, draftCells => {
+      gol.matrix.forEach((zeroOneRow, rowIndex) => {
+        zeroOneRow.forEach((zeroOne, columnIndex) => {
+          const draftCell = draftCells[rowIndex][columnIndex];
+          draftCell.age = zeroOne === 1 ? draftCell.age + 1 : 0;
+        });
+      });
+    });
   }
 
   _mapToProps() {
