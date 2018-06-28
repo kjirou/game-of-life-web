@@ -13,6 +13,7 @@ export default class App {
     this._destination = destination;
 
     this._cellMatrix = App._createCellMatrix(48, 48);
+    this._timerId = null;
   }
 
   static _createCellMatrix(rowLength, columnLength) {
@@ -105,5 +106,22 @@ export default class App {
       ),
       this._destination
     );
+  }
+
+  start(interval = 1000) {
+    if (this._timerId) {
+      throw new Error('It has already started');
+    }
+
+    const task = () => {
+      this._tickGame();
+      this.render();
+    }
+
+    this._timerId = setInterval(task, interval);
+  }
+
+  stop() {
+    clearInterval(this._timerId);
   }
 }
