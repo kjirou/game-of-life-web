@@ -17,13 +17,15 @@ export default class App {
   static _createCellMatrix(rowLength, columnLength) {
     const cells = [];
     for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
+      const cellsRow = [];
       for (let columnIndex = 0; columnIndex < columnLength; columnIndex++) {
-        cells.push({
+        cellsRow.push({
           age: 0,
           columnIndex,
           rowIndex,
         });
       }
+      cells.push(cellsRow);
     }
 
     return {
