@@ -5,7 +5,7 @@ import styles from './style.scss';
 const Cell = ({age, columnIndex, rowIndex}) => {
   const classNames = [styles.cell];
   if (age > 0) {
-    className.push([styles.isAlive]);
+    classNames.push(styles.isAlive);
   }
 
   const inlineStyle = {
@@ -14,7 +14,7 @@ const Cell = ({age, columnIndex, rowIndex}) => {
   };
 
   return (
-    <div className={classNames.join()} style={inlineStyle}></div>
+    <div className={classNames.join(' ')} style={inlineStyle}></div>
   );
 };
 
