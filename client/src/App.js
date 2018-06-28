@@ -39,10 +39,10 @@ export default class App {
   _tickGame() {
     // TODO: 悪くないライブラリだけど連携処理で重いし、せっかくだし自分で書いてみる
     const gol = new GameOfLife(this._cellMatrix.rowLength, this._cellMatrix.columnLength);
-    const zeroOneMap = this._cellMatrix.cells.map(cellsRow => {
+    const zeroOneMatrix = this._cellMatrix.cells.map(cellsRow => {
       return cellsRow.map(cell => cell.age > 0 ? 1 : 0);
     });
-    gol.copyMatrixAt(0, 0, zeroOneMap);
+    gol.copyMatrixAt(0, 0, zeroOneMatrix);
     gol.tick();
     this._cellMatrix.cells = produce(this._cellMatrix.cells, draftCells => {
       gol.matrix.forEach((zeroOneRow, rowIndex) => {
@@ -52,6 +52,40 @@ export default class App {
         });
       });
     });
+  }
+
+  _placeLifes(rowIndex, columnIndex, zeroOneMatrix) {
+    this._cellMatrix.cells = produce(this._cellMatrix.cells, draftCells => {
+      zeroOneMatrix.forEach((zeroOneRow, relativeRowIndex) => {
+        zeroOneRow.forEach((zeroOne, relativeColumnIndex) => {
+          const draftCellRow = draftCells[rowIndex + relativeRowIndex];
+          if (!draftCellRow) {
+            return;
+          }
+          const draftCell = draftCellRow[columnIndex + relativeColumnIndex];
+          if (!draftCell) {
+            return;
+          }
+          draftCell.age = zeroOne;
+        });
+      });
+    });
+  }
+
+  _placeSampleLifePattern(rowIndex, columnIndex, sampleId) {
+    const lifes = {
+      'blinker': [
+        [1, 1, 1],
+      ],
+      'clock': [
+        [0, 1, 0, 0],
+        [0, 0, 1, 1],
+        [1, 1, 0, 0],
+        [0, 0, 1, 0],
+      ],
+    }[sampleId];
+
+    this._placeLifes(rowIndex, columnIndex, lifes);
   }
 
   _mapToProps() {
