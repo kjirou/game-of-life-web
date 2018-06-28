@@ -94,7 +94,7 @@ export default class App {
     };
   }
 
-  mount() {
+  render() {
     ReactDOM.render(
       (
         <DoNothingErrorBoundary>
