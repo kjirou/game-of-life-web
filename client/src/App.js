@@ -10,10 +10,32 @@ setAutoFreeze(false);
 export default class App {
   constructor(destination) {
     this._destination = destination;
+
+    this._cellMatrix = App._createCellMatrix(48, 48);
   }
 
-  _generateRootProps() {
+  static _createCellMatrix(rowLength, columnLength) {
+    const cells = [];
+    for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
+      for (let columnIndex = 0; columnIndex < columnLength; columnIndex++) {
+        cells.push({
+          age: 0,
+          columnIndex,
+          rowIndex,
+        });
+      }
+    }
+
     return {
+      rowLength,
+      columnLength,
+      cells,
+    };
+  }
+
+  _mapToProps() {
+    return {
+      cellMatrix: this._cellMatrix,
     };
   }
 
@@ -22,7 +44,7 @@ export default class App {
       (
         <DoNothingErrorBoundary>
           <Root
-            {...this._generateRootProps()}
+            {...this._mapToProps()}
           />
         </DoNothingErrorBoundary>
       ),
