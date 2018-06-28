@@ -1,1 +1,3 @@
-console.log(112233);
+import App from './App';
+
+window.App = App;

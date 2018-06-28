@@ -4,6 +4,14 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/bundle.css">
     <script src="/bundle.js"></script>
+    <script>
+      var App = window.App;
+
+      window.addEventListener('DOMContentLoaded', function() {
+        var app = new App(document.querySelector('.js-app'));
+        app.mount();
+      });
+    </script>
   </head>
   <body>
     <div class="js-app"></div>
