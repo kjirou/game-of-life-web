@@ -8,12 +8,33 @@ import Root from './components/Root';
 
 setAutoFreeze(false);
 
+const INTERVALS = {
+  veryFast: {
+    interval: 100,
+    label: 'Very fast',
+  },
+  fast: {
+    interval: 500,
+    label: 'Fast',
+  },
+  slow: {
+    interval: 1000,
+    label: 'Slow',
+  },
+};
+const INTERVALS_ORDER = [
+  'slow',
+  'fast',
+  'veryFast',
+];
+
 export default class App {
   constructor(destination) {
     this._destination = destination;
 
     this._cellMatrix = App._createCellMatrix(48, 48);
     this._timerId = null;
+    this._intervalId = 'fast';
   }
 
   static _createCellMatrix(rowLength, columnLength) {
@@ -89,9 +110,21 @@ export default class App {
     this._placeLifes(rowIndex, columnIndex, lifes);
   }
 
+  _getIntervalData() {
+    return INTERVALS[this._intervalId];
+  }
+
+  _getNextIntervalId() {
+    const currentIndex = INTERVALS_ORDER.indexOf(this._intervalId);
+    const nextIndex = (currentIndex + 1) % INTERVALS_ORDER.length;
+    return INTERVALS_ORDER[nextIndex];
+  }
+
   _mapToProps() {
     return {
       cellMatrix: this._cellMatrix,
+
+      intervalData: this._getIntervalData(),
 
       isRunning: Boolean(this._timerId),
 
@@ -115,7 +148,15 @@ export default class App {
       },
 
       onRunnningSpeedButtonClick: () => {
-        console.log('onRunnningSpeedButtonClick!');
+        const isRunning = Boolean(this._timerId);
+        if (isRunning) {
+          this._stop();
+        }
+        this._intervalId = this._getNextIntervalId();
+        if (isRunning) {
+          this._start();
+        }
+        this.render();
       },
     };
   }
@@ -133,7 +174,7 @@ export default class App {
     );
   }
 
-  _start(interval = 1000) {
+  _start() {
     if (this._timerId) {
       throw new Error('It has already started');
     }
@@ -143,7 +184,7 @@ export default class App {
       this.render();
     }
 
-    this._timerId = setInterval(task, interval);
+    this._timerId = setInterval(task, this._getIntervalData().interval);
   }
 
   _stop() {

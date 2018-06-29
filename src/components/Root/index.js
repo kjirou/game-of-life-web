@@ -73,6 +73,7 @@ const Button = ({label, onClick}) => {
 };
 
 const ControlPanel = ({
+  intervalData,
   isRunning,
   onRunnningButtonClick,
   onRunnningSpeedButtonClick,
@@ -86,7 +87,7 @@ const ControlPanel = ({
         </div>
         <div className={styles.commandTitle}>Running Speed</div>
         <div className={styles.command}>
-          <Button onClick={onRunnningSpeedButtonClick} label={'Fast,Slow,..'} />
+          <Button onClick={onRunnningSpeedButtonClick} label={intervalData.label} />
         </div>
       </div>
     </React.Fragment>
@@ -95,6 +96,7 @@ const ControlPanel = ({
 
 const Root = ({
   cellMatrix,
+  intervalData,
   isRunning,
   onCellClick,
   onRunnningButtonClick,
@@ -104,8 +106,12 @@ const Root = ({
     <div className={styles.root}>
       <Header />
       <div className={styles.game}>
-        <CellMatrix cells={cellMatrix.cells} onCellClick={onCellClick} />
+        <CellMatrix
+          cells={cellMatrix.cells}
+          onCellClick={onCellClick}
+          />
         <ControlPanel
+          intervalData={intervalData}
           isRunning={isRunning}
           onRunnningButtonClick={onRunnningButtonClick}
           onRunnningSpeedButtonClick={onRunnningSpeedButtonClick}
