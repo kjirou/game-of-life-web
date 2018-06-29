@@ -1,5 +1,5 @@
 {
-  "name": "dungeon-maker-clone",
+  "name": "game-of-life-web",
   "version": "1.0.0",
   "description": "(Write later)",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kjirou/dungeon-maker-clone.git"
+    "url": "git+https://github.com/kjirou/game-of-life-web.git"
   },
   "author": "kjirou",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kjirou/dungeon-maker-clone/issues"
+    "url": "https://github.com/kjirou/game-of-life-web/issues"
   },
-  "homepage": "https://github.com/kjirou/dungeon-maker-clone#readme",
+  "homepage": "https://github.com/kjirou/game-of-life-web#readme",
   "devDependencies": {
     "assets-webpack-plugin": "3.6.0",
     "autoprefixer": "8.2.0",
