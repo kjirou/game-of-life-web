@@ -77,19 +77,23 @@ const ControlPanel = ({
   );
 };
 
-export default class Root extends React.Component {
-  render() {
-    return (
-      <div className={styles.root}>
-        <Header />
-        <div className={styles.game}>
-          <CellMatrix cells={this.props.cellMatrix.cells} />
-          <ControlPanel
-            onRunnningButtonClick={this.props.onRunnningButtonClick}
-            onRunnningSpeedButtonClick={this.props.onRunnningSpeedButtonClick}
-            />
-        </div>
+const Root = ({
+  cellMatrix,
+  onRunnningButtonClick,
+  onRunnningSpeedButtonClick,
+}) => {
+  return (
+    <div className={styles.root}>
+      <Header />
+      <div className={styles.game}>
+        <CellMatrix cells={cellMatrix.cells} />
+        <ControlPanel
+          onRunnningButtonClick={onRunnningButtonClick}
+          onRunnningSpeedButtonClick={onRunnningSpeedButtonClick}
+          />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default Root;
