@@ -1,0 +1,16 @@
+// device data
+//$device-iphone6-width: 375px;
+//$device-iphone6-height: 667px;
+//$device-iphone6-status-bar-height: 20px;
+
+// Layout
+$cell-matrix-width: 480px;
+$cell-matrix-height: 480px;
+$control-panel-width: 160px;
+$control-panel-height: 480px;
+$app-width: $cell-matrix-width + $control-panel-width;
+$app-height: 480px;
+
+// Others
+$color: #31e722;  // 49,231,34 (Termilan.app's definition) Ref) https://en.wikipedia.org/wiki/ANSI_escape_code
+$background-color: black;

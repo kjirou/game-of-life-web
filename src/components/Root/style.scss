@@ -1,17 +1,19 @@
-// device data
-//$device-iphone6-width: 375px;
-//$device-iphone6-height: 667px;
-//$device-iphone6-status-bar-height: 20px;
-
-// app size
-$app-width: 480px;
-$app-height: 480px;
+@import '../utils.scss';
 
 html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $color;
+  background-color: $background-color;
 }
 
 .root {
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
   width: $app-width;
   height: $app-height;
   background-color: #d7d7d7;
