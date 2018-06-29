@@ -42,7 +42,6 @@ module.exports = {
     before(app) {
       const genereateCommonTemplateVariables = (req) => {
         return {
-          railsAssetURL: 'http://' + req.hostname + ':4434/assets',
         };
       };
 
