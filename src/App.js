@@ -37,7 +37,7 @@ export default class App {
     };
   }
 
-  _tickGame() {
+  _tickGameOfLife() {
     // TODO: 悪くないライブラリだけど連携処理で重いし、せっかくだし自分で書いてみる
     const gol = new GameOfLife(this._cellMatrix.rowLength, this._cellMatrix.columnLength);
     const zeroOneMatrix = this._cellMatrix.cells.map(cellsRow => {
@@ -114,7 +114,7 @@ export default class App {
     }
 
     const task = () => {
-      this._tickGame();
+      this._tickGameOfLife();
       this.render();
     }
 
