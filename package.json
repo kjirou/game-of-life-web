@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "develop": "$(npm bin)/webpack-dev-server --config ./webpack/dev.config.js",
+    "release:build": "$(npm bin)/webpack --config ./webpack/prod.config.js",
+    "release:test-serve": "$(npm bin)/http-server ./docs",
     "test": "exit 1"
   },
   "repository": {
