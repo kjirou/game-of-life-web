@@ -9,7 +9,8 @@ const appName = "Conway's Game of Life";
 const Header = () => {
   return (
     <div className={styles.header}>
-      <div className={styles.title}>{appName}</div>
+      <span className={styles.title}>{appName}</span>
+      <a className={styles.gitHubLink} href="https://github.com/kjirou/game-of-life-web">GitHub</a>
     </div>
   );
 };

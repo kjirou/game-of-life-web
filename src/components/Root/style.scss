@@ -21,9 +21,14 @@ body {
   position: relative;
   box-sizing: border-box;
   border: 1px solid $color;
+  padding: 3px 5px;
 
   .title {
-    padding: 3px 5px;
+  }
+  .gitHubLink {
+    margin-left: 20px;
+    font-size: 12px;
+    color: $color;
   }
 }
 
