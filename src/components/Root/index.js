@@ -76,6 +76,7 @@ const Button = ({label, onClick}) => {
 const ControlPanel = ({
   intervalData,
   isRunning,
+  onRandomButtonClick,
   onRunnningButtonClick,
   onRunnningSpeedButtonClick,
 }) => {
@@ -90,6 +91,10 @@ const ControlPanel = ({
         <div className={styles.command}>
           <Button onClick={onRunnningSpeedButtonClick} label={intervalData.label} />
         </div>
+        <div className={styles.commandTitle}>Sample placement</div>
+        <div className={styles.command}>
+          <Button onClick={onRandomButtonClick} label="Random" />
+        </div>
       </div>
     </React.Fragment>
   );
@@ -100,6 +105,7 @@ const Root = ({
   intervalData,
   isRunning,
   onCellClick,
+  onRandomButtonClick,
   onRunnningButtonClick,
   onRunnningSpeedButtonClick,
 }) => {
@@ -114,6 +120,7 @@ const Root = ({
         <ControlPanel
           intervalData={intervalData}
           isRunning={isRunning}
+          onRandomButtonClick={onRandomButtonClick}
           onRunnningButtonClick={onRunnningButtonClick}
           onRunnningSpeedButtonClick={onRunnningSpeedButtonClick}
           />

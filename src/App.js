@@ -142,6 +142,18 @@ export default class App {
         this.render();
       },
 
+      onRandomButtonClick: () => {
+        const birthrate = 1 / 3;
+        this._cellMatrix.cells = produce(this._cellMatrix.cells, draftCells => {
+          draftCells.forEach(draftCellsRow => {
+            draftCellsRow.forEach(draftCell => {
+              draftCell.age = Math.random() < birthrate ? 1 : 0;
+            });
+          });
+        });
+        this.render();
+      },
+
       onRunnningButtonClick: () => {
         if (this._timerId) {
           this._stop();
