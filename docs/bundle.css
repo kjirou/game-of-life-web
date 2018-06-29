@@ -1,0 +1,91 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #31e722;
+  background-color: black;
+}
+
+.root___1aoHp {
+  position: relative;
+  margin: 10px auto;
+  width: 640px;
+  border: 1px solid #31e722;
+}
+
+.header___2j-2K {
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #31e722;
+}
+
+.header___2j-2K .title___1nz2J {
+  padding: 3px 5px;
+}
+
+.game___Wz-RE {
+  position: relative;
+  height: 480px;
+}
+
+.game___Wz-RE .cellMatrix___3jpbv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 480px;
+  height: 480px;
+}
+
+.game___Wz-RE .cellMatrix___3jpbv .cell___37oDI {
+  position: absolute;
+  box-sizing: border-box;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #31e722;
+  background-color: black;
+  cursor: pointer;
+}
+
+.game___Wz-RE .cellMatrix___3jpbv .cell___37oDI.isAlive___psc0k {
+  background-color: #31e722;
+}
+
+.game___Wz-RE .controlPanel___1_581 {
+  position: absolute;
+  box-sizing: border-box;
+  top: 0;
+  left: 480px;
+  width: 160px;
+  height: 480px;
+  border: 1px solid #31e722;
+}
+
+.game___Wz-RE .controlPanel___1_581 .button___2T1nV {
+  box-sizing: border-box;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #31e722;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.game___Wz-RE .controlPanel___1_581 .commandTitle___2wjVV {
+  position: static;
+  width: 100%;
+  height: 15px;
+  line-height: 15px;
+  font-size: 12px;
+  text-align: center;
+  color: black;
+  background-color: #31e722;
+}
+
+.game___Wz-RE .controlPanel___1_581 .command___2wFGr {
+  position: static;
+  padding: 5px;
+}
