@@ -5,10 +5,13 @@ import Cell from '../Cell';
 
 import styles from './style.scss';
 
+// The reason for this being a variable is that, "'" breaks JSX syntax at my vim/GitHub environment...
+const appName = "Conway's Game of Life";
+
 const Header = () => {
   return (
     <div className={styles.header}>
-      <div className={styles.title}>Conway's Game of Life</div>
+      <div className={styles.title}>{appName}</div>
     </div>
   );
 };
