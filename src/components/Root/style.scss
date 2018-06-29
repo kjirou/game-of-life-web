@@ -37,6 +37,18 @@ body {
     left: 0;
     width: $cell-matrix-width;
     height: $cell-matrix-height;
+
+    .cell {
+      position: absolute;
+      box-sizing: border-box;
+      width: 10px;
+      height: 10px;
+      border: 1px solid $color;
+      background-color: $background-color;
+      &.isAlive {
+        background-color: $color;
+      }
+    }
   }
 
   .controlPanel {

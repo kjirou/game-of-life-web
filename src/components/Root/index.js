@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Cell from '../Cell';
-
 import styles from './style.scss';
 
 // The reason for this being a variable is that, "'" breaks JSX syntax at my vim/GitHub environment...
@@ -13,6 +11,22 @@ const Header = () => {
     <div className={styles.header}>
       <div className={styles.title}>{appName}</div>
     </div>
+  );
+};
+
+const Cell = ({age, columnIndex, rowIndex}) => {
+  const classNames = [styles.cell];
+  if (age > 0) {
+    classNames.push(styles.isAlive);
+  }
+
+  const inlineStyle = {
+    top: rowIndex * 10,
+    left: columnIndex * 10,
+  };
+
+  return (
+    <div className={classNames.join(' ')} style={inlineStyle}></div>
   );
 };
 
