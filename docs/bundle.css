@@ -19,10 +19,13 @@ body {
   position: relative;
   box-sizing: border-box;
   border: 1px solid #31e722;
+  padding: 3px 5px;
 }
 
-.header___2j-2K .title___1nz2J {
-  padding: 3px 5px;
+.header___2j-2K .gitHubLink___3KmJv {
+  margin-left: 20px;
+  font-size: 12px;
+  color: #31e722;
 }
 
 .game___Wz-RE {
