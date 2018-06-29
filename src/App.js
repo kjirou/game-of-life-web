@@ -93,11 +93,17 @@ export default class App {
     return {
       cellMatrix: this._cellMatrix,
       onRunnningButtonClick: () => {
-        console.log('onRunnningButtonClick!');
+        if (this._timerId) {
+          this._stop();
+        } else {
+          this._start();
+        }
+        this.render();
       },
       onRunnningSpeedButtonClick: () => {
         console.log('onRunnningSpeedButtonClick!');
       },
+      isRunning: Boolean(this._timerId),
     };
   }
 
@@ -114,7 +120,7 @@ export default class App {
     );
   }
 
-  start(interval = 1000) {
+  _start(interval = 1000) {
     if (this._timerId) {
       throw new Error('It has already started');
     }
@@ -124,13 +130,11 @@ export default class App {
       this.render();
     }
 
-    setTimeout(() => {
-      task();
-      this._timerId = setInterval(task, interval);
-    }, 0);
+    this._timerId = setInterval(task, interval);
   }
 
-  stop() {
+  _stop() {
     clearInterval(this._timerId);
+    this._timerId = null;
   }
 }

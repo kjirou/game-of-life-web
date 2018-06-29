@@ -58,6 +58,7 @@ const Button = ({label, onClick}) => {
 };
 
 const ControlPanel = ({
+  isRunning,
   onRunnningButtonClick,
   onRunnningSpeedButtonClick,
 }) => {
@@ -66,7 +67,7 @@ const ControlPanel = ({
       <div className={styles.controlPanel}>
         <div className={styles.commandTitle}>Running</div>
         <div className={styles.command}>
-          <Button onClick={onRunnningButtonClick} label={'ON/OFF'} />
+          <Button onClick={onRunnningButtonClick} label={isRunning ? 'On' : 'Off'} />
         </div>
         <div className={styles.commandTitle}>Running Speed</div>
         <div className={styles.command}>
@@ -79,6 +80,7 @@ const ControlPanel = ({
 
 const Root = ({
   cellMatrix,
+  isRunning,
   onRunnningButtonClick,
   onRunnningSpeedButtonClick,
 }) => {
@@ -88,6 +90,7 @@ const Root = ({
       <div className={styles.game}>
         <CellMatrix cells={cellMatrix.cells} />
         <ControlPanel
+          isRunning={isRunning}
           onRunnningButtonClick={onRunnningButtonClick}
           onRunnningSpeedButtonClick={onRunnningSpeedButtonClick}
           />
