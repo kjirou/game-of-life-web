@@ -47,5 +47,30 @@ body {
     width: $control-panel-width;
     height: $control-panel-height;
     border: 1px solid $color;
+
+    .button {
+      box-sizing: border-box;
+      font-size: 14px;
+      text-align: center;
+      border: 1px solid $color;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .commandTitle {
+      position: static;
+      width: 100%;
+      height: 15px;
+      line-height: 15px;
+      font-size: 12px;
+      text-align: center;
+      color: $background-color;
+      background-color: $color;
+    }
+
+    .command {
+      position: static;
+      padding: 5px;
+    }
   }
 }

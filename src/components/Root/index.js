@@ -37,9 +37,29 @@ const CellMatrix = ({cells}) => {
   );
 };
 
-const ControlPanel = () => {
+const Button = ({label, onClick}) => {
   return (
-    <div className={styles.controlPanel}>CP</div>
+    <div className={styles.button} onClick={onClick}>{label}</div>
+  );
+};
+
+const ControlPanel = ({
+  onRunnningButtonClick,
+  onRunnningSpeedButtonClick,
+}) => {
+  return (
+    <React.Fragment>
+      <div className={styles.controlPanel}>
+        <div className={styles.commandTitle}>Running</div>
+        <div className={styles.command}>
+          <Button onClick={onRunnningButtonClick} label={'ON/OFF'} />
+        </div>
+        <div className={styles.commandTitle}>Running Speed</div>
+        <div className={styles.command}>
+          <Button onClick={onRunnningSpeedButtonClick} label={'Fast,Slow,..'} />
+        </div>
+      </div>
+    </React.Fragment>
   );
 };
 
@@ -50,7 +70,10 @@ export default class Root extends React.Component {
         <Header />
         <div className={styles.game}>
           <CellMatrix cells={this.props.cellMatrix.cells} />
-          <ControlPanel />
+          <ControlPanel
+            onRunnningButtonClick={this.props.onRunnningButtonClick}
+            onRunnningSpeedButtonClick={this.props.onRunnningSpeedButtonClick}
+            />
         </div>
       </div>
     );

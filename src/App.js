@@ -92,6 +92,12 @@ export default class App {
   _mapToProps() {
     return {
       cellMatrix: this._cellMatrix,
+      onRunnningButtonClick: () => {
+        console.log('onRunnningButtonClick!');
+      },
+      onRunnningSpeedButtonClick: () => {
+        console.log('onRunnningSpeedButtonClick!');
+      },
     };
   }
 
