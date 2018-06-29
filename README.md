@@ -1,2 +1,2 @@
-# dungeon-maker-clone
+# game-of-life-web
 (write later)
