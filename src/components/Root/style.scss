@@ -45,6 +45,8 @@ body {
       height: 10px;
       border: 1px solid $color;
       background-color: $background-color;
+      cursor: pointer;
+
       &.isAlive {
         background-color: $color;
       }

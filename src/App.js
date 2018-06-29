@@ -92,6 +92,19 @@ export default class App {
   _mapToProps() {
     return {
       cellMatrix: this._cellMatrix,
+
+      isRunning: Boolean(this._timerId),
+
+      onCellClick: ({rowIndex, columnIndex}) => {
+        this._cellMatrix.cells[rowIndex][columnIndex] = produce(
+          this._cellMatrix.cells[rowIndex][columnIndex],
+          draftCell => {
+            draftCell.age = draftCell.age > 0 ? 0 : 1;
+          }
+        );
+        this.render();
+      },
+
       onRunnningButtonClick: () => {
         if (this._timerId) {
           this._stop();
@@ -100,10 +113,10 @@ export default class App {
         }
         this.render();
       },
+
       onRunnningSpeedButtonClick: () => {
         console.log('onRunnningSpeedButtonClick!');
       },
-      isRunning: Boolean(this._timerId),
     };
   }
 

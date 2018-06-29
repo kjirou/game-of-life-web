@@ -14,7 +14,12 @@ const Header = () => {
   );
 };
 
-const Cell = ({age, columnIndex, rowIndex}) => {
+const Cell = ({
+  age,
+  columnIndex,
+  onClick,
+  rowIndex,
+}) => {
   const classNames = [styles.cell];
   if (age > 0) {
     classNames.push(styles.isAlive);
@@ -26,11 +31,20 @@ const Cell = ({age, columnIndex, rowIndex}) => {
   };
 
   return (
-    <div className={classNames.join(' ')} style={inlineStyle}></div>
+    <div
+      className={classNames.join(' ')}
+      onClick={() => {
+        onClick({rowIndex, columnIndex});
+      }}
+      style={inlineStyle}
+      />
   );
 };
 
-const CellMatrix = ({cells}) => {
+const CellMatrix = ({
+  cells,
+  onCellClick,
+}) => {
   const cellElements = [];
   cells.forEach(cellsRow => {
     cellsRow.forEach(cell => {
@@ -41,6 +55,7 @@ const CellMatrix = ({cells}) => {
           age={cell.age}
           columnIndex={cell.columnIndex}
           rowIndex={cell.rowIndex}
+          onClick={onCellClick}
         />
       );
     });
@@ -81,6 +96,7 @@ const ControlPanel = ({
 const Root = ({
   cellMatrix,
   isRunning,
+  onCellClick,
   onRunnningButtonClick,
   onRunnningSpeedButtonClick,
 }) => {
@@ -88,7 +104,7 @@ const Root = ({
     <div className={styles.root}>
       <Header />
       <div className={styles.game}>
-        <CellMatrix cells={cellMatrix.cells} />
+        <CellMatrix cells={cellMatrix.cells} onCellClick={onCellClick} />
         <ControlPanel
           isRunning={isRunning}
           onRunnningButtonClick={onRunnningButtonClick}
