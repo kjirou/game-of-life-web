@@ -6,8 +6,8 @@ const webpack = require('webpack');
 
 const {
   DIST_ROOT,
-  MOCK_SERVER_ROOT,
   SRC_ROOT,
+  WEBPACK_DEV_SERVER_ROOT,
   sharedWebpackConfig,
 } = require('./shared');
 
@@ -49,14 +49,14 @@ module.exports = {
 
       app.get('/', (req, res) => {
         res.render(
-          path.join(MOCK_SERVER_ROOT, 'templates/index.html'),
+          path.join(WEBPACK_DEV_SERVER_ROOT, 'templates/index.html'),
           genereateCommonTemplateVariables(req)
         );
       });
 
       app.get('/*.html', (req, res) => {
         res.render(
-          path.join(MOCK_SERVER_ROOT, 'templates', req.path),
+          path.join(WEBPACK_DEV_SERVER_ROOT, 'templates', req.path),
           genereateCommonTemplateVariables(req)
         );
       });

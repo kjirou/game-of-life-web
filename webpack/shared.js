@@ -7,8 +7,9 @@ const fs = require('fs');
 
 const PROJECT_ROOT = path.join(__dirname, '..');
 const DIST_ROOT = path.join(PROJECT_ROOT, 'dist');
-const MOCK_SERVER_ROOT = path.join(PROJECT_ROOT, 'mock-server');
 const SRC_ROOT = path.join(PROJECT_ROOT, 'src');
+const WEBPACK_ROOT = path.join(PROJECT_ROOT, 'webpack');
+const WEBPACK_DEV_SERVER_ROOT = path.join(WEBPACK_ROOT, 'dev-server');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const babelrc = JSON.parse(fs.readFileSync('.babelrc', 'utf8'));
@@ -74,8 +75,8 @@ const sharedWebpackConfig = {
 
 module.exports = {
   DIST_ROOT,
-  MOCK_SERVER_ROOT,
   PROJECT_ROOT,
   SRC_ROOT,
+  WEBPACK_DEV_SERVER_ROOT,
   sharedWebpackConfig,
 };
