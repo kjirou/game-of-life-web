@@ -1,7 +1,7 @@
 {
   "name": "game-of-life-web",
-  "version": "1.0.0",
-  "description": "(Write later)",
+  "version": "0.0.0",
+  "description": "Conway's Game of Life on the Web",
   "main": "index.js",
   "scripts": {
     "develop": "$(npm bin)/webpack-dev-server --config ./webpack/dev.config.js",
@@ -17,6 +17,7 @@
     "url": "https://github.com/kjirou/game-of-life-web/issues"
   },
   "homepage": "https://github.com/kjirou/game-of-life-web#readme",
+  "private": true,
   "devDependencies": {
     "assets-webpack-plugin": "3.6.0",
     "autoprefixer": "8.2.0",

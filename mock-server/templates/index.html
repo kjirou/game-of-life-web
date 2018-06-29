@@ -2,13 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>Dungeon Maker Clone</title>
+    <title>Conway's Game of Life</title>
+    <link rel="stylesheet" type="text/css" href="/bundle.css">
+    <script src="/bundle.js"></script>
+    <script>
+      var App = window.App;
+
+      window.addEventListener('DOMContentLoaded', function() {
+        var app = new App(document.querySelector('.js-app'));
+        window._app = app;
+        app.start();
+      });
+    </script>
   </head>
   <body>
-    <ul>
-      <li><a href="game.html">game</a></li>
-    </ul>
+    <div class="js-app"></div>
   </body>
 </html>
