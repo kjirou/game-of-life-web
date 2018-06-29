@@ -118,7 +118,10 @@ export default class App {
       this.render();
     }
 
-    this._timerId = setInterval(task, interval);
+    setTimeout(() => {
+      task();
+      this._timerId = setInterval(task, interval);
+    }, 0);
   }
 
   stop() {
