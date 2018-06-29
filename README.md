@@ -1,2 +1,3 @@
 # game-of-life-web
-(write later)
+
+Conway's Game of Life on the Web
