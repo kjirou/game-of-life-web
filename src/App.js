@@ -120,13 +120,17 @@ export default class App {
     return INTERVALS_ORDER[nextIndex];
   }
 
+  _isRunning() {
+    return Boolean(this._timerId);
+  }
+
   _mapToProps() {
     return {
       cellMatrix: this._cellMatrix,
 
       intervalData: this._getIntervalData(),
 
-      isRunning: Boolean(this._timerId),
+      isRunning: this._isRunning(),
 
       onCellClick: ({rowIndex, columnIndex}) => {
         this._cellMatrix.cells[rowIndex][columnIndex] = produce(
@@ -148,7 +152,7 @@ export default class App {
       },
 
       onRunnningSpeedButtonClick: () => {
-        const isRunning = Boolean(this._timerId);
+        const isRunning = this._isRunning();
         if (isRunning) {
           this._stop();
         }
