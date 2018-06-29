@@ -7,6 +7,7 @@ const fs = require('fs');
 
 const PROJECT_ROOT = path.join(__dirname, '..');
 const DIST_ROOT = path.join(PROJECT_ROOT, 'dist');
+const DOCS_ROOT = path.join(PROJECT_ROOT, 'docs');
 const SRC_ROOT = path.join(PROJECT_ROOT, 'src');
 const WEBPACK_ROOT = path.join(PROJECT_ROOT, 'webpack');
 const WEBPACK_DEV_SERVER_ROOT = path.join(WEBPACK_ROOT, 'dev-server');
@@ -75,6 +76,7 @@ const sharedWebpackConfig = {
 
 module.exports = {
   DIST_ROOT,
+  DOCS_ROOT,
   PROJECT_ROOT,
   SRC_ROOT,
   WEBPACK_DEV_SERVER_ROOT,
