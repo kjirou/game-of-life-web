@@ -36,5 +36,5 @@ pip-log.txt
 testem.*.*.*.json
 
 
-/client/dist/
-/public/client/dist/
+/dist/
+/public/dist/

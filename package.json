@@ -4,8 +4,8 @@
   "description": "(Write later)",
   "main": "index.js",
   "scripts": {
-    "develop": "$(npm bin)/webpack-dev-server --config ./client/webpack/dev.config.js",
-    "test": "NODE_ENV=test $(npm bin)/mocha --opts client/mocha-opts/client-local.opts 'client/**/__tests__/*-test.js'"
+    "develop": "$(npm bin)/webpack-dev-server --config ./webpack/dev.config.js",
+    "test": "NODE_ENV=test $(npm bin)/mocha --opts ./mocha-opts/local.opts 'src/**/__tests__/*-test.js'"
   },
   "repository": {
     "type": "git",

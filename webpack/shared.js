@@ -5,15 +5,10 @@ const webpack = require('webpack');
 const fs = require('fs');
 
 
-const RAILS_PUBLIC_CLIENT_DIST_RELATIVE_PATH = 'public/client/dist';
-
-const PROJECT_ROOT = path.join(__dirname, '../..');
-const CLIENT_ROOT = path.join(PROJECT_ROOT, 'client');
-const CLIENT_DIST_ROOT = path.join(CLIENT_ROOT, 'dist');
-const CLIENT_MOCK_SERVER_ROOT = path.join(CLIENT_ROOT, 'mock-server');
-const CLIENT_SRC_ROOT = path.join(CLIENT_ROOT, 'src');
-const RAILS_APP_ASSETS_ROOT = path.join(PROJECT_ROOT, 'app/assets');
-const RAILS_PUBLIC_CLIENT_DIST_ROOT = path.join(PROJECT_ROOT, RAILS_PUBLIC_CLIENT_DIST_RELATIVE_PATH);
+const PROJECT_ROOT = path.join(__dirname, '..');
+const DIST_ROOT = path.join(PROJECT_ROOT, 'dist');
+const MOCK_SERVER_ROOT = path.join(PROJECT_ROOT, 'mock-server');
+const SRC_ROOT = path.join(PROJECT_ROOT, 'src');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const babelrc = JSON.parse(fs.readFileSync('.babelrc', 'utf8'));
@@ -78,12 +73,9 @@ const sharedWebpackConfig = {
 
 
 module.exports = {
-  CLIENT_DIST_ROOT,
-  CLIENT_MOCK_SERVER_ROOT,
-  CLIENT_SRC_ROOT,
+  DIST_ROOT,
+  MOCK_SERVER_ROOT,
   PROJECT_ROOT,
-  RAILS_APP_ASSETS_ROOT,
-  RAILS_PUBLIC_CLIENT_DIST_RELATIVE_PATH,
-  RAILS_PUBLIC_CLIENT_DIST_ROOT,
+  SRC_ROOT,
   sharedWebpackConfig,
 };
