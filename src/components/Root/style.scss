@@ -15,12 +15,38 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: $app-width;
-  height: $app-height;
-  background-color: #d7d7d7;
+  border: 1px solid $color;
 }
 
-.cellMatrix {
+.header {
   position: relative;
-  width: $app-width;
-  height: $app-height;
+  box-sizing: border-box;
+  border: 1px solid $color;
+
+  .title {
+    padding: 3px 5px;
+  }
+}
+
+.game {
+  position: relative;
+  height: $cell-matrix-height;
+
+  .cellMatrix {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $cell-matrix-width;
+    height: $cell-matrix-height;
+  }
+
+  .controlPanel {
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    left: $cell-matrix-width;
+    width: $control-panel-width;
+    height: $control-panel-height;
+    border: 1px solid $color;
+  }
 }

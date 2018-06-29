@@ -5,6 +5,14 @@ import Cell from '../Cell';
 
 import styles from './style.scss';
 
+const Header = () => {
+  return (
+    <div className={styles.header}>
+      <div className={styles.title}>Conway's Game of Life</div>
+    </div>
+  );
+};
+
 const CellMatrix = ({cells}) => {
   const cellElements = [];
   cells.forEach(cellsRow => {
@@ -26,11 +34,21 @@ const CellMatrix = ({cells}) => {
   );
 };
 
+const ControlPanel = () => {
+  return (
+    <div className={styles.controlPanel}>CP</div>
+  );
+};
+
 export default class Root extends React.Component {
   render() {
     return (
       <div className={styles.root}>
-        <CellMatrix cells={this.props.cellMatrix.cells} />
+        <Header />
+        <div className={styles.game}>
+          <CellMatrix cells={this.props.cellMatrix.cells} />
+          <ControlPanel />
+        </div>
       </div>
     );
   }
