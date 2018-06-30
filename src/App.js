@@ -1,7 +1,7 @@
 import GameOfLife from 'game-of-life-logic';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import {default as produce, setAutoFreeze} from 'immer';
+import produce from 'immer';
 
 import DoNothingErrorBoundary from './components/DoNothingErrorBoundary';
 import Root from './components/Root';
@@ -9,8 +9,6 @@ import {
   findClickMode,
   toClickModeChoice,
 } from './constants';
-
-setAutoFreeze(false);
 
 const INTERVALS = {
   veryFast: {
