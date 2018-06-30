@@ -1,34 +1,16 @@
 import GameOfLife from 'game-of-life-logic';
+import produce from 'immer';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import produce from 'immer';
 
 import DoNothingErrorBoundary from './components/DoNothingErrorBoundary';
 import Root from './components/Root';
 import {
   findClickMode,
+  findInterval,
+  getNextIntervalId,
   toClickModeChoice,
 } from './constants';
-
-const INTERVALS = {
-  veryFast: {
-    interval: 100,
-    label: 'Very fast',
-  },
-  fast: {
-    interval: 500,
-    label: 'Fast',
-  },
-  slow: {
-    interval: 1000,
-    label: 'Slow',
-  },
-};
-const INTERVALS_ORDER = [
-  'slow',
-  'fast',
-  'veryFast',
-];
 
 
 export default class App {
@@ -114,16 +96,6 @@ export default class App {
     this._placeLifes(rowIndex, columnIndex, lifes);
   }
 
-  _getIntervalData() {
-    return INTERVALS[this._intervalId];
-  }
-
-  _getNextIntervalId() {
-    const currentIndex = INTERVALS_ORDER.indexOf(this._intervalId);
-    const nextIndex = (currentIndex + 1) % INTERVALS_ORDER.length;
-    return INTERVALS_ORDER[nextIndex];
-  }
-
   _isRunning() {
     return Boolean(this._timerId);
   }
@@ -131,7 +103,7 @@ export default class App {
   _mapToProps() {
     return {
       cellMatrix: this._cellMatrix,
-      intervalData: this._getIntervalData(),
+      intervalData: findInterval(this._intervalId),
       isRunning: this._isRunning(),
       selectedClickModeChoice: toClickModeChoice(findClickMode(this._clickModeId)),
 
@@ -186,7 +158,7 @@ export default class App {
         if (isRunning) {
           this._stop();
         }
-        this._intervalId = this._getNextIntervalId();
+        this._intervalId = getNextIntervalId(this._intervalId);
         if (isRunning) {
           this._start();
         }
@@ -218,7 +190,7 @@ export default class App {
       this.render();
     }
 
-    this._timerId = setInterval(task, this._getIntervalData().interval);
+    this._timerId = setInterval(task, findInterval(this._intervalId).interval);
   }
 
   _stop() {
