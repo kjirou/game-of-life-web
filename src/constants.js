@@ -34,13 +34,17 @@ const INTERVALS = [
 const INTERVALS_ORDER = INTERVALS.map(v => v.id);
 
 
-export const findClickMode = (id) => {
-  const found = CLICK_MODES.find(v => v.id === id);
-  if (found) {
-    return found;
-  }
-  throw new Error('Can not find any click mode');
+export const generateFinder = (list, searchedKey) => {
+  return (searchValue) => {
+    const found = list.find(v => v[searchedKey] === searchValue);
+    if (found) {
+      return found;
+    }
+    throw new Error('Can not find any element');
+  };
 };
+
+export const findClickMode = generateFinder(CLICK_MODES, 'id');
 
 export const toClickModeChoice = (clickModeMaster) => {
   return {
@@ -53,13 +57,7 @@ export const generateClickModeChoices = () => {
   return CLICK_MODES.map(e => toClickModeChoice(e));
 };
 
-export const findInterval = (id) => {
-  const found = INTERVALS.find(v => v.id === id);
-  if (found) {
-    return found;
-  }
-  throw new Error('Can not find any element');
-};
+export const findInterval = generateFinder(INTERVALS, 'id');
 
 export const getNextIntervalId = (baseId) => {
   const currentIndex = INTERVALS_ORDER.indexOf(baseId);
