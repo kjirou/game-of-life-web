@@ -66,7 +66,6 @@ module.exports = {
     new webpack.DefinePlugin({
       __DEVELOPMENT__: true,
       __REACT_DEVTOOLS_GLOBAL_HOOK__: '({isDisabled: true})',
-      __TEST__: false,
     }),
     new ExtractTextPlugin('bundle.css'),
   ]

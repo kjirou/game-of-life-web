@@ -27,7 +27,6 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       __DEVELOPMENT__: false,
-      __TEST__: false,
     }),
     new ExtractTextPlugin('bundle.css'),
   ]
