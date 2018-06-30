@@ -108,14 +108,13 @@ export default class App {
               draftCell.age = draftCell.age > 0 ? 0 : 1;
             }
           );
-        } else if (this._clickModeId === 'blinker') {
-          this._placeSampleLifePattern(rowIndex, columnIndex, 'blinker');
-        } else if (this._clickModeId === 'clock') {
-          this._placeSampleLifePattern(rowIndex, columnIndex, 'clock');
-        } else if (this._clickModeId === 'glider') {
-          this._placeSampleLifePattern(rowIndex, columnIndex, 'glider');
-        } else if (this._clickModeId === 'pulsar') {
-          this._placeSampleLifePattern(rowIndex, columnIndex, 'pulsar');
+        } else {
+          try {
+            // TODO: There are no relationship between click-modes and sample-life-patterns
+            const lifePattern = findSampleLifePattern(this._clickModeId);
+            this._placeLifes(rowIndex, columnIndex, lifePattern.dots);
+          } catch (error) {
+          }
         }
         this.render();
       },
