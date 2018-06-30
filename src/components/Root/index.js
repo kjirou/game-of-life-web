@@ -110,27 +110,35 @@ const ControlPanel = ({
   return (
     <div className={styles.controlPanel}>
       <div className={styles.commandTitle}>Running</div>
-      <div className={styles.command}>
-        <Button onClick={onRunnningButtonClick} label={isRunning ? 'On' : 'Off'} />
+      <div className={styles.commandList}>
+        <div className={styles.command}>
+          <Button onClick={onRunnningButtonClick} label={isRunning ? 'On' : 'Off'} />
+        </div>
       </div>
       <div className={styles.commandTitle}>Running Speed</div>
-      <div className={styles.command}>
-        <Button onClick={onRunnningSpeedButtonClick} label={intervalData.label} />
+      <div className={styles.commandList}>
+        <div className={styles.command}>
+          <Button onClick={onRunnningSpeedButtonClick} label={intervalData.label} />
+        </div>
       </div>
       <div className={styles.commandTitle}>Click Mode</div>
-      <div className={styles.command}>
-        <Select
-          choices={clickModeChoices}
-          onChange={onClickModeChange}
-          selectedValue={selectedClickModeChoice.value}
-          />
+      <div className={styles.commandList}>
+        <div className={styles.command}>
+          <Select
+            choices={clickModeChoices}
+            onChange={onClickModeChange}
+            selectedValue={selectedClickModeChoice.value}
+            />
+        </div>
       </div>
       <div className={styles.commandTitle}>Bulk Placement</div>
-      <div className={styles.command}>
-        <Button onClick={onRandomButtonClick} label="Random" />
-      </div>
-      <div className={styles.command}>
-        <Button onClick={onCleanButtonClick} label="Clean" />
+      <div className={styles.commandList}>
+        <div className={styles.command}>
+          <Button onClick={onRandomButtonClick} label="Random" />
+        </div>
+        <div className={styles.command}>
+          <Button onClick={onCleanButtonClick} label="Clean" />
+        </div>
       </div>
     </div>
   );
