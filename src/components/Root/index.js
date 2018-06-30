@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import {generateClickModeChoices} from '../../constants';
+
 import styles from './style.scss';
 
 // The reason for this being a variable is that, "'" breaks JSX syntax at my vim/GitHub environment...
 const appName = "Conway's Game of Life";
+
+const clickModeChoices = generateClickModeChoices();
 
 const Header = () => {
   return (
@@ -73,12 +77,34 @@ const Button = ({label, onClick}) => {
   );
 };
 
+const Select = ({
+  choices,
+  onChange,
+  selectedValue,
+}) => {
+  return (
+    <select
+      className={styles.select}
+      onChange={onChange}
+      value={selectedValue}
+      >
+    {
+      choices.map(({label, value}, index) => {
+        return <option key={'choice' + index} value={value}>{label}</option>;
+      })
+    }
+    </select>
+  );
+};
+
 const ControlPanel = ({
   intervalData,
   isRunning,
+  onClickModeChange,
   onRandomButtonClick,
   onRunnningButtonClick,
   onRunnningSpeedButtonClick,
+  selectedClickModeChoice,
 }) => {
   return (
     <div className={styles.controlPanel}>
@@ -89,6 +115,14 @@ const ControlPanel = ({
       <div className={styles.commandTitle}>Running Speed</div>
       <div className={styles.command}>
         <Button onClick={onRunnningSpeedButtonClick} label={intervalData.label} />
+      </div>
+      <div className={styles.commandTitle}>Click Mode</div>
+      <div className={styles.command}>
+        <Select
+          choices={clickModeChoices}
+          onChange={onClickModeChange}
+          selectedValue={selectedClickModeChoice.value}
+          />
       </div>
       <div className={styles.commandTitle}>Sample placement</div>
       <div className={styles.command}>
@@ -103,9 +137,11 @@ const Root = ({
   intervalData,
   isRunning,
   onCellClick,
+  onClickModeChange,
   onRandomButtonClick,
   onRunnningButtonClick,
   onRunnningSpeedButtonClick,
+  selectedClickModeChoice,
 }) => {
   return (
     <div className={styles.root}>
@@ -118,9 +154,11 @@ const Root = ({
         <ControlPanel
           intervalData={intervalData}
           isRunning={isRunning}
+          onClickModeChange={onClickModeChange}
           onRandomButtonClick={onRandomButtonClick}
           onRunnningButtonClick={onRunnningButtonClick}
           onRunnningSpeedButtonClick={onRunnningSpeedButtonClick}
+          selectedClickModeChoice={selectedClickModeChoice}
           />
       </div>
     </div>

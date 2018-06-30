@@ -5,6 +5,10 @@ import {default as produce, setAutoFreeze} from 'immer';
 
 import DoNothingErrorBoundary from './components/DoNothingErrorBoundary';
 import Root from './components/Root';
+import {
+  findClickMode,
+  toClickModeChoice,
+} from './constants';
 
 setAutoFreeze(false);
 
@@ -28,6 +32,7 @@ const INTERVALS_ORDER = [
   'veryFast',
 ];
 
+
 export default class App {
   constructor(destination) {
     this._destination = destination;
@@ -35,6 +40,7 @@ export default class App {
     this._cellMatrix = App._createCellMatrix(48, 48);
     this._timerId = null;
     this._intervalId = 'fast';
+    this._clickModeId = 'dot';
   }
 
   static _createCellMatrix(rowLength, columnLength) {
@@ -127,10 +133,13 @@ export default class App {
   _mapToProps() {
     return {
       cellMatrix: this._cellMatrix,
-
       intervalData: this._getIntervalData(),
-
       isRunning: this._isRunning(),
+      selectedClickModeChoice: toClickModeChoice(findClickMode(this._clickModeId)),
+
+      //
+      // Event handlers
+      //
 
       onCellClick: ({rowIndex, columnIndex}) => {
         this._cellMatrix.cells[rowIndex][columnIndex] = produce(
@@ -139,6 +148,11 @@ export default class App {
             draftCell.age = draftCell.age > 0 ? 0 : 1;
           }
         );
+        this.render();
+      },
+
+      onClickModeChange: (event) => {
+        this._clickModeId = event.target.value;
         this.render();
       },
 
