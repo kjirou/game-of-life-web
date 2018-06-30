@@ -19,6 +19,14 @@ export const CLICK_MODES = [
     id: 'pulsar',
     label: 'Pulsar',
   },
+  {
+    id: 'spaceship',
+    label: 'Spaceship',
+  },
+  {
+    id: 'octagon2',
+    label: 'Octagon 2',
+  },
 ];
 
 const INTERVALS = [
@@ -41,6 +49,8 @@ const INTERVALS = [
 
 const INTERVALS_ORDER = INTERVALS.map(v => v.id);
 
+// Source) http://conwaylife.com/wiki/Oscillator
+// It does not name "OSCILLATORS" because "glider" and "spaceship" are not included in it.
 const SAMPLE_LIFE_PATTERNS = [
   {
     id: 'blinker',
@@ -66,6 +76,19 @@ const SAMPLE_LIFE_PATTERNS = [
     ],
   },
   {
+    id: 'octagon2',
+    dots: [
+      [0, 0, 0, 1, 1, 0, 0, 0],
+      [0, 0, 1, 0, 0, 1, 0, 0],
+      [0, 1, 0, 0, 0, 0, 1, 0],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [0, 1, 0, 0, 0, 0, 1, 0],
+      [0, 0, 1, 0, 0, 1, 0, 0],
+      [0, 0, 0, 1, 1, 0, 0, 0],
+    ],
+  },
+  {
     id: 'pulsar',
     dots: [
       [0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0],
@@ -81,6 +104,15 @@ const SAMPLE_LIFE_PATTERNS = [
       [1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0],
+    ],
+  },
+  {
+    id: 'spaceship',
+    dots: [
+      [0, 1, 0, 0, 1],
+      [1, 0, 0, 0, 0],
+      [1, 0, 0, 0, 1],
+      [1, 1, 1, 1, 0],
     ],
   },
 ];
