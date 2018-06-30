@@ -96,6 +96,17 @@ export default class App {
       // Event handlers
       //
 
+      onCleanButtonClick: () => {
+        this._cellMatrix.cells = produce(this._cellMatrix.cells, draftCells => {
+          draftCells.forEach(draftCellsRow => {
+            draftCellsRow.forEach(draftCell => {
+              draftCell.age = 0;
+            });
+          });
+        });
+        this.render();
+      },
+
       onCellClick: ({rowIndex, columnIndex}) => {
         if (this._clickModeId === 'dot') {
           this._cellMatrix.cells[rowIndex][columnIndex] = produce(

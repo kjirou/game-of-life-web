@@ -100,6 +100,7 @@ const Select = ({
 const ControlPanel = ({
   intervalData,
   isRunning,
+  onCleanButtonClick,
   onClickModeChange,
   onRandomButtonClick,
   onRunnningButtonClick,
@@ -124,9 +125,12 @@ const ControlPanel = ({
           selectedValue={selectedClickModeChoice.value}
           />
       </div>
-      <div className={styles.commandTitle}>Sample placement</div>
+      <div className={styles.commandTitle}>Bulk Placement</div>
       <div className={styles.command}>
         <Button onClick={onRandomButtonClick} label="Random" />
+      </div>
+      <div className={styles.command}>
+        <Button onClick={onCleanButtonClick} label="Clean" />
       </div>
     </div>
   );
@@ -137,6 +141,7 @@ const Root = ({
   intervalData,
   isRunning,
   onCellClick,
+  onCleanButtonClick,
   onClickModeChange,
   onRandomButtonClick,
   onRunnningButtonClick,
@@ -154,6 +159,7 @@ const Root = ({
         <ControlPanel
           intervalData={intervalData}
           isRunning={isRunning}
+          onCleanButtonClick={onCleanButtonClick}
           onClickModeChange={onClickModeChange}
           onRandomButtonClick={onRandomButtonClick}
           onRunnningButtonClick={onRunnningButtonClick}
