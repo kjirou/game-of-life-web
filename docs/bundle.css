@@ -97,7 +97,11 @@ body {
   background-color: #31e722;
 }
 
-.game___Wz-RE .controlPanel___1_581 .command___2wFGr {
+.game___Wz-RE .controlPanel___1_581 .commandList___3jKVH {
   position: static;
   padding: 5px;
+}
+
+.game___Wz-RE .controlPanel___1_581 .commandList___3jKVH .command___2wFGr:not(:first-child) {
+  margin-top: 5px;
 }
