@@ -142,12 +142,18 @@ export default class App {
       //
 
       onCellClick: ({rowIndex, columnIndex}) => {
-        this._cellMatrix.cells[rowIndex][columnIndex] = produce(
-          this._cellMatrix.cells[rowIndex][columnIndex],
-          draftCell => {
-            draftCell.age = draftCell.age > 0 ? 0 : 1;
-          }
-        );
+        if (this._clickModeId === 'dot') {
+          this._cellMatrix.cells[rowIndex][columnIndex] = produce(
+            this._cellMatrix.cells[rowIndex][columnIndex],
+            draftCell => {
+              draftCell.age = draftCell.age > 0 ? 0 : 1;
+            }
+          );
+        } else if (this._clickModeId === 'blinker') {
+          this._placeSampleLifePattern(rowIndex, columnIndex, 'blinker');
+        } else if (this._clickModeId === 'clock') {
+          this._placeSampleLifePattern(rowIndex, columnIndex, 'clock');
+        }
         this.render();
       },
 
