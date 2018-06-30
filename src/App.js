@@ -145,7 +145,7 @@ export default class App {
       },
 
       onRunnningButtonClick: () => {
-        if (this._timerId) {
+        if (this._isRunning()) {
           this._stop();
         } else {
           this._start();
@@ -181,7 +181,7 @@ export default class App {
   }
 
   _start() {
-    if (this._timerId) {
+    if (this._isRunning()) {
       throw new Error('It has already started');
     }
 
