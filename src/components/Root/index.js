@@ -81,22 +81,20 @@ const ControlPanel = ({
   onRunnningSpeedButtonClick,
 }) => {
   return (
-    <React.Fragment>
-      <div className={styles.controlPanel}>
-        <div className={styles.commandTitle}>Running</div>
-        <div className={styles.command}>
-          <Button onClick={onRunnningButtonClick} label={isRunning ? 'On' : 'Off'} />
-        </div>
-        <div className={styles.commandTitle}>Running Speed</div>
-        <div className={styles.command}>
-          <Button onClick={onRunnningSpeedButtonClick} label={intervalData.label} />
-        </div>
-        <div className={styles.commandTitle}>Sample placement</div>
-        <div className={styles.command}>
-          <Button onClick={onRandomButtonClick} label="Random" />
-        </div>
+    <div className={styles.controlPanel}>
+      <div className={styles.commandTitle}>Running</div>
+      <div className={styles.command}>
+        <Button onClick={onRunnningButtonClick} label={isRunning ? 'On' : 'Off'} />
       </div>
-    </React.Fragment>
+      <div className={styles.commandTitle}>Running Speed</div>
+      <div className={styles.command}>
+        <Button onClick={onRunnningSpeedButtonClick} label={intervalData.label} />
+      </div>
+      <div className={styles.commandTitle}>Sample placement</div>
+      <div className={styles.command}>
+        <Button onClick={onRandomButtonClick} label="Random" />
+      </div>
+    </div>
   );
 };
 
