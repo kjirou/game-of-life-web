@@ -10,7 +10,8 @@ body {
 
 .root___1aoHp {
   position: relative;
-  margin: 10px auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 640px;
   border: 1px solid #31e722;
 }
@@ -75,6 +76,14 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.game___Wz-RE .controlPanel___1_581 .select___1rB3O {
+  box-sizing: border-box;
+  border: 1px solid #31e722;
+  font-size: 14px;
+  color: #31e722;
+  background-color: black;
 }
 
 .game___Wz-RE .controlPanel___1_581 .commandTitle___2wjVV {
