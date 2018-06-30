@@ -33,6 +33,24 @@ const INTERVALS = [
 
 const INTERVALS_ORDER = INTERVALS.map(v => v.id);
 
+const SAMPLE_LIFE_PATTERNS = [
+  {
+    id: 'blinker',
+    dots: [
+      [1, 1, 1],
+    ],
+  },
+  {
+    id: 'clock',
+    dots: [
+      [0, 1, 0, 0],
+      [0, 0, 1, 1],
+      [1, 1, 0, 0],
+      [0, 0, 1, 0],
+    ],
+  },
+];
+
 
 export const generateFinder = (list, searchedKey) => {
   return (searchValue) => {
@@ -64,3 +82,5 @@ export const getNextIntervalId = (baseId) => {
   const nextIndex = (currentIndex + 1) % INTERVALS_ORDER.length;
   return INTERVALS_ORDER[nextIndex];
 };
+
+export const findSampleLifePattern = generateFinder(SAMPLE_LIFE_PATTERNS, 'id');

@@ -8,6 +8,7 @@ import Root from './components/Root';
 import {
   findClickMode,
   findInterval,
+  findSampleLifePattern,
   getNextIntervalId,
   toClickModeChoice,
 } from './constants';
@@ -81,19 +82,7 @@ export default class App {
   }
 
   _placeSampleLifePattern(rowIndex, columnIndex, sampleId) {
-    const lifes = {
-      'blinker': [
-        [1, 1, 1],
-      ],
-      'clock': [
-        [0, 1, 0, 0],
-        [0, 0, 1, 1],
-        [1, 1, 0, 0],
-        [0, 0, 1, 0],
-      ],
-    }[sampleId];
-
-    this._placeLifes(rowIndex, columnIndex, lifes);
+    this._placeLifes(rowIndex, columnIndex, findSampleLifePattern(sampleId).dots);
   }
 
   _isRunning() {
