@@ -81,10 +81,6 @@ export default class App {
     });
   }
 
-  _placeSampleLifePattern(rowIndex, columnIndex, sampleId) {
-    this._placeLifes(rowIndex, columnIndex, findSampleLifePattern(sampleId).dots);
-  }
-
   _isRunning() {
     return Boolean(this._timerId);
   }
