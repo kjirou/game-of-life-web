@@ -63,18 +63,12 @@ export default class App {
     });
   }
 
-  _placeLifes(rowIndex, columnIndex, zeroOneMatrix) {
+  _placeLifes(baseRowIndex, baseColumnIndex, zeroOneMatrix) {
     this._cellMatrix.cells = produce(this._cellMatrix.cells, draftCells => {
       zeroOneMatrix.forEach((zeroOneRow, relativeRowIndex) => {
         zeroOneRow.forEach((zeroOne, relativeColumnIndex) => {
-          const draftCellRow = draftCells[rowIndex + relativeRowIndex];
-          if (!draftCellRow) {
-            return;
-          }
-          const draftCell = draftCellRow[columnIndex + relativeColumnIndex];
-          if (!draftCell) {
-            return;
-          }
+          const draftCellRow = draftCells[(baseRowIndex + relativeRowIndex) % this._cellMatrix.rowLength];
+          const draftCell = draftCellRow[(baseColumnIndex + relativeColumnIndex) % this._cellMatrix.columnLength];
           draftCell.age = zeroOne;
         });
       });
