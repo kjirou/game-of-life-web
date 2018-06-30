@@ -153,12 +153,12 @@ export default class App {
       },
 
       onRunnningSpeedButtonClick: () => {
-        const isRunning = this._isRunning();
-        if (isRunning) {
+        const wasRunning = this._isRunning();
+        if (wasRunning) {
           this._stop();
         }
         this._intervalId = getNextIntervalId(this._intervalId);
-        if (isRunning) {
+        if (wasRunning) {
           this._start();
         }
         this.render();
