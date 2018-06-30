@@ -112,6 +112,10 @@ export default class App {
           this._placeSampleLifePattern(rowIndex, columnIndex, 'blinker');
         } else if (this._clickModeId === 'clock') {
           this._placeSampleLifePattern(rowIndex, columnIndex, 'clock');
+        } else if (this._clickModeId === 'glider') {
+          this._placeSampleLifePattern(rowIndex, columnIndex, 'glider');
+        } else if (this._clickModeId === 'pulsar') {
+          this._placeSampleLifePattern(rowIndex, columnIndex, 'pulsar');
         }
         this.render();
       },
