@@ -31,18 +31,23 @@ export const CLICK_MODES = [
 
 const INTERVALS = [
   {
-    id: 'slow',
+    id: 'verySlow',
     interval: 1000,
+    label: 'Very slow',
+  },
+  {
+    id: 'slow',
+    interval: 500,
     label: 'Slow',
   },
   {
     id: 'fast',
-    interval: 500,
+    interval: 200,
     label: 'Fast',
   },
   {
     id: 'veryFast',
-    interval: 100,
+    interval: 50,
     label: 'Very fast',
   },
 ];
